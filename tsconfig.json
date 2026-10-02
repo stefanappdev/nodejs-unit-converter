@@ -1,6 +1,7 @@
 {
   "compilerOptions": {
     "target": "ES6",
+    "types": ["node","express"],
     "module": "nodenext",
     "lib": [
       "DOM",
@@ -9,7 +10,7 @@
       "ESNext.AsyncIterable"
     ],
     "sourceMap": true,
-    "rootDir": "./src",
+    "rootDir": "./",
     "outDir": "./dist",
     "moduleResolution": "nodenext",
     "removeComments": true,

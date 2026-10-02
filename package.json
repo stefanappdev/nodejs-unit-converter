@@ -2,17 +2,24 @@
   "name": "unit-converter",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "./dist/server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "compile":"tsc -b",
-    "devmode":"nodemon server.js"
+    "compile": "tsc -b",
+    "startServer": "./dist/server.js",
+    "dev": "tsc -b && nodemon ./dist/server.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "type": "commonjs",
   "devDependencies": {
+    "@types/express": "^5.0.6",
+    "@types/node": "^26.6.4",
+    "nodemon": "^3.1.14",
     "typescript": "^7.0.2"
+  },
+  "dependencies": {
+    "express": "^5.2.1"
   }
 }
