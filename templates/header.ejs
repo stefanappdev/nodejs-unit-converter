@@ -4,20 +4,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home</title>
+    <% if(title){ %>
+    <title><%= title %></title>
+    <% } %>
+    <link rel="stylesheet" type="text/css" href="/styles/index.css"/>
 </head>
-<body>
-    <div id="main-navbar">
+<div class="site-header">
+         <h1>Unit converter</h1>
         <nav>
             <a href="/">Home</a>
             <a href="/length">Length</a>
             <a href="/temperature">Temperature</a>
         </nav>
     </div>
-  
-    <main>
-
-
-    </main>
-</body>
-</html>
