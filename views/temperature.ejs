@@ -1,10 +1,118 @@
-
 <%- include('../templates/header.ejs',{title:title})%>
 <body>
-    <div>
+  <div>
     <main>
 
-        <h1>this is the temperature page</h1>
+      
+
+      <form id="length-form">
+        <label for="targetnum">enter a value:</label>
+        <input 
+        name="targetnum" 
+        id="targetnum" 
+        type="text" 
+        aria-placeholder="enter a value" 
+        placeholder="enter a value"
+        value=""
+        />
+        <label for="lengthFrom">from:</label>
+        <select id='lengthFrom' name="lengthFrom" required>
+           <option value="">Select an option </option>
+          <option value="metre">metre(m)</option>
+          <option value="centimetre">centimetre(cm)</option>
+        </select> 
+
+        <label for="lengthTo">to:</label>
+        <select id="lengthTo" name="lengthTo" required>
+          <option value="">Select an option </option>
+          
+          <option value="feet">Feet(Ft)</option>
+          <option value="inches" >inches(")</option>
+        </select>
+        <button>submit</button>
+
+        </form>
+
+
+          <div class="result">
+
+        </div>
+      
+        <button class="reset-btn">reset</button>
+
+        <script>
+
+          const centimetreToInches=(num)=>{
+          return num*0.3937
+        } 
+        
+        const centimetreToFeet=(num)=>{
+          return num*0.0328
+        } 
+
+        const metreToInches=(num)=>{
+          return num*39.37
+        } 
+        
+        const metreToFeet=(num)=>{
+          return num*3.28
+        } 
+
+       
+
+        let form=document.getElementById('length-form')
+        form.addEventListener('submit',(event)=>{
+          event.preventDefault()
+          let num=event.target.targetnum.value;
+          if(num===""){
+            alert("please enter a number")
+            return
+          }
+          
+          if(event.target.lengthFrom.value==='metre'){
+              if(event.target.lengthTo.value==='inches'){
+                let result=metreToInches(parseFloat(num));
+                document.querySelector(".result").textContent=`${result} inches`
+              }else if(event.target.lengthTo.value==='feet'){
+                let result=metreToFeet(parseFloat(num));
+                document.querySelector(".result").textContent=`${result} feet`
+              }
+        }
+
+         if(event.target.lengthFrom.value==='centimetre'){
+              if(event.target.lengthTo.value==='inches'){
+                let result=centimetreToInches(parseFloat(num));
+                document.querySelector(".result").textContent=`${result} inches`
+              }else if(event.target.lengthTo.value==='feet'){
+                let result=centimetreToFeet(parseFloat(num));
+                document.querySelector(".result").textContent=`${result} feet`
+              }
+        }
+      
+      
+      
+      })
+
+
+      let reset=document.querySelector('.reset-btn');
+      let lengthToSelectbox=document.querySelector('#lengthTo');
+      let lengthFromSelectbox=document.querySelector('#lengthFrom');
+      let result=document.querySelector('.result')
+      let enterednum=document.querySelector("#targetnum");
+
+      reset.addEventListener('click',()=>{
+        enterednum.value=''
+        result.textContent='';
+        lengthFromSelectbox.value='';
+        lengthToSelectbox.value='';
+        alert('form cleared')
+
+      })
+    
+
+      </script>
+
+      
    </main>
 </div>
     
