@@ -3,11 +3,18 @@
   <div>
     <main>
 
-      
+      <h1 class="text-center text-2xl font-bold mt-5"><%= title %> conversion page</h1>
+     <div class="flex flex-col justify-center items-center">
 
-      <form id="length-form">
-        <label for="targetnum">enter a value:</label>
-        <input 
+     
+      
+      <form id="temperature-form" 
+      class="
+      flex flex-col m-10 h-[350px] w-[350px] justify-center items-center rounded-md bg-slate-200
+      ">
+        <label class='text-lg font-bold' for="targetnum">enter a value:</label>
+        <input
+        class="w-[50%] my-2 h-[35px] rounded-md border-md focus:bg-sky-100" 
         name="targetnum" 
         id="targetnum" 
         type="text" 
@@ -15,52 +22,61 @@
         placeholder="enter a value"
         value=""
         />
-        <label for="lengthFrom">from:</label>
-        <select id='lengthFrom' name="lengthFrom" required>
-           <option value="">Select an option </option>
-          <option value="metre">metre(m)</option>
-          <option value="centimetre">centimetre(cm)</option>
+
+        <label class='text-lg font-bold' for="tempFrom">from:</label>
+
+
+        <select 
+           id='tempFrom'  
+           name="tempFrom" required
+           class="my-2 rounded-md border-md h-[35px] focus:bg-sky-100" 
+           >
+          <option value="">Select an option </option>
+          <option value="celsius">celsius(C)</option>
+          <option value="farenheit">farenheit(F)</option>
         </select> 
 
-        <label for="lengthTo">to:</label>
-        <select id="lengthTo" name="lengthTo" required>
+        <label class="text-lg h-[35px] font-bold" for="tempTo">to:</label>
+        <select id="tempTo" name="lengthTo" required>
           <option value="">Select an option </option>
-          
-          <option value="feet">Feet(Ft)</option>
-          <option value="inches" >inches(")</option>
+          <option value="celsius">celsius(C)</option>
+          <option value="farenheit">farenheit(F)</option>
         </select>
-        <button>submit</button>
+
+        <button class="bg-blue-700 text-neutral-50 
+        w-20 h-10 text-md mt-5 rounded-md font-semibold mx-auto">submit</button>
 
         </form>
 
+      
 
-          <div class="result">
+          <div class="result my-10 text-center text-lg font-semibold">
 
         </div>
       
-        <button class="reset-btn">reset</button>
+        <button class="reset-btn bg-red-500 text-neutral-50 
+        w-20 h-10 text-md rounded-md font-semibold mx-auto
+        ">reset</button>
+
+         </div>
 
         <script>
 
-          const centimetreToInches=(num)=>{
-          return num*0.3937
-        } 
+       
         
-        const centimetreToFeet=(num)=>{
-          return num*0.0328
+        const celsiusToFarenheit=(num)=>{
+          return (num*1.8)+32
         } 
 
-        const metreToInches=(num)=>{
-          return num*39.37
+        const farenheitToCelsius=(num)=>{
+          return (num - 32) /1.8
         } 
         
-        const metreToFeet=(num)=>{
-          return num*3.28
-        } 
+      
 
        
 
-        let form=document.getElementById('length-form')
+        let form=document.getElementById('temperature-form')
         form.addEventListener('submit',(event)=>{
           event.preventDefault()
           let num=event.target.targetnum.value;
@@ -69,42 +85,35 @@
             return
           }
           
-          if(event.target.lengthFrom.value==='metre'){
-              if(event.target.lengthTo.value==='inches'){
-                let result=metreToInches(parseFloat(num));
-                document.querySelector(".result").textContent=`${result} inches`
-              }else if(event.target.lengthTo.value==='feet'){
-                let result=metreToFeet(parseFloat(num));
-                document.querySelector(".result").textContent=`${result} feet`
+          if(event.target.tempFrom.value==='celsius'){
+              
+                let result=celsiusToFarenheit(parseFloat(num));
+                document.querySelector(".result").textContent=`${parseFloat(num)} C is ${result} F`
+          }
+              
+          
+          if(event.target.tempFrom.value==='farenheit'){
+                let result=farenheitToCelsius(parseFloat(num));
+                document.querySelector(".result").textContent=`${parseFloat(num)} F is${result} C`
               }
-        }
+        
 
-         if(event.target.lengthFrom.value==='centimetre'){
-              if(event.target.lengthTo.value==='inches'){
-                let result=centimetreToInches(parseFloat(num));
-                document.querySelector(".result").textContent=`${result} inches`
-              }else if(event.target.lengthTo.value==='feet'){
-                let result=centimetreToFeet(parseFloat(num));
-                document.querySelector(".result").textContent=`${result} feet`
-              }
-        }
-      
       
       
       })
 
 
       let reset=document.querySelector('.reset-btn');
-      let lengthToSelectbox=document.querySelector('#lengthTo');
-      let lengthFromSelectbox=document.querySelector('#lengthFrom');
+      let tempToSelectbox=document.querySelector('#tempTo');
+      let tempFromSelectbox=document.querySelector('#tempFrom');
       let result=document.querySelector('.result')
       let enterednum=document.querySelector("#targetnum");
 
       reset.addEventListener('click',()=>{
         enterednum.value=''
         result.textContent='';
-        lengthFromSelectbox.value='';
-        lengthToSelectbox.value='';
+        tempFromSelectbox.value='';
+        tempToSelectbox.value='';
         alert('form cleared')
 
       })

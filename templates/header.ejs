@@ -7,13 +7,53 @@
     <% if(title){ %>
     <title><%= title %></title>
     <% } %>
-    <link rel="stylesheet" type="text/css" href="/styles/index.css"/>
+    <link rel="stylesheet" type="text/css" href="/styles/out.css"/>
 </head>
-<div class="site-header">
-         <h1>Unit converter</h1>
-        <nav>
+<div class="
+site-header flex items-center bg-sky-600 text-zinc-100 p-[10px] [position:relative] justify-between  
+">
+         <h1 class="text-3xl font-bold ">Unit converter</h1>
+        <nav class="
+        hidden 
+        md:inline-flex items-center 
+        ">
             <a href="/">Home</a>
             <a href="/length">Length</a>
             <a href="/temperature">Temperature</a>
         </nav>
+        <img id='site-main-dropdown' class=" h-[30px] w-[30px]" alt="dropdown-menu" src="/images/menu-rounded.svg"/>
+        <div id='site-main-dropdown-content' class="
+        hidden  h-[200px] rounded-sm
+        bg-slate-200 text-stone-700 w-[180px] p-2
+        absolute  top-10 left-66"
+        >
+            <img id="site-main-dropdown-close" src="/images/close-outline.svg" 
+            class=" 
+            h-[30px] w-[30px] float-right" alt="close menu"/>
+            <br/>
+
+            <nav class=" 
+            flex flex-col 
+            justify-center
+            items-center px-2 ">
+
+                <a class='text-lg font-bold cursor-pointer mx-2' href="/">Home</a>
+                <br/>
+                <a class='text-lg font-bold cursor-pointer mx-2' href="/length">Length</a>
+                <br/>
+                <a class='text-lg font-bold cursor-pointer mx-2' href="/temperature">Temperature</a>
+            </nav>
+        </div>
+        <script>
+            let dropDownIcon=document.querySelector('#site-main-dropdown');
+            let dropDownContent=document.querySelector('#site-main-dropdown-content');
+            let dropDownClose=document.querySelector('#site-main-dropdown-close')
+            dropDownIcon.addEventListener('click',()=>{
+                dropDownContent.classList.remove('hidden');
+            })
+             dropDownClose.addEventListener('click',()=>{
+                dropDownContent.classList.add('hidden');
+            })
+
+        </script>
     </div>

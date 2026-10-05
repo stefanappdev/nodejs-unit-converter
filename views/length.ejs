@@ -3,11 +3,18 @@
   <div>
     <main>
 
-      
+      <h1 class="text-center text-2xl font-bold mt-5"><%= title %> conversion page</h1>
+     <div class="flex flex-col justify-center items-center">
 
-      <form id="length-form">
-        <label for="targetnum">enter a value:</label>
-        <input 
+     
+      
+      <form id="length-form" 
+      class="
+      flex flex-col m-10 h-[350px] w-[350px] justify-center items-center rounded-md bg-slate-200
+      ">
+        <label class='text-lg font-bold' for="targetnum">enter a value:</label>
+        <input
+        class="w-[50%] my-2 h-[35px] rounded-md border-md focus:bg-sky-100" 
         name="targetnum" 
         id="targetnum" 
         type="text" 
@@ -15,30 +22,44 @@
         placeholder="enter a value"
         value=""
         />
-        <label for="lengthFrom">from:</label>
-        <select id='lengthFrom' name="lengthFrom" required>
-           <option value="">Select an option </option>
+
+        <label class='text-lg font-bold' for="lengthFrom">from:</label>
+
+
+        <select 
+           id='lengthFrom'  
+           name="lengthFrom" required
+           class="my-2 rounded-md border-md h-[35px] focus:bg-sky-100" 
+           >
+          <option value="">Select an option </option>
           <option value="metre">metre(m)</option>
           <option value="centimetre">centimetre(cm)</option>
         </select> 
 
-        <label for="lengthTo">to:</label>
+        <label class="text-lg h-[35px] font-bold" for="lengthTo">to:</label>
         <select id="lengthTo" name="lengthTo" required>
           <option value="">Select an option </option>
           
           <option value="feet">Feet(Ft)</option>
           <option value="inches" >inches(")</option>
         </select>
-        <button>submit</button>
+
+        <button class="bg-blue-700 text-neutral-50 
+        w-20 h-10 text-md mt-5 rounded-md font-semibold mx-auto">submit</button>
 
         </form>
 
+      
 
-          <div class="result">
+          <div class="result my-10 text-center text-lg font-semibold">
 
         </div>
       
-        <button class="reset-btn">reset</button>
+        <button class="reset-btn bg-red-500 text-neutral-50 
+        w-20 h-10 text-md rounded-md font-semibold mx-auto
+        ">reset</button>
+
+         </div>
 
         <script>
 
@@ -72,20 +93,20 @@
           if(event.target.lengthFrom.value==='metre'){
               if(event.target.lengthTo.value==='inches'){
                 let result=metreToInches(parseFloat(num));
-                document.querySelector(".result").textContent=`${result} inches`
+                document.querySelector(".result").textContent=`${parseFloat(num)}m = ${result} inches`
               }else if(event.target.lengthTo.value==='feet'){
                 let result=metreToFeet(parseFloat(num));
-                document.querySelector(".result").textContent=`${result} feet`
+                document.querySelector(".result").textContent=`${parseFloat(num)}m = ${result} feet`
               }
         }
 
          if(event.target.lengthFrom.value==='centimetre'){
               if(event.target.lengthTo.value==='inches'){
                 let result=centimetreToInches(parseFloat(num));
-                document.querySelector(".result").textContent=`${result} inches`
+                document.querySelector(".result").textContent=`${parseFloat(num)}cm=${result} inches`
               }else if(event.target.lengthTo.value==='feet'){
                 let result=centimetreToFeet(parseFloat(num));
-                document.querySelector(".result").textContent=`${result} feet`
+                document.querySelector(".result").textContent=`${parseFloat(num)}cm=${result} feet`
               }
         }
       

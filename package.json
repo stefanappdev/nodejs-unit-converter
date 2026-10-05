@@ -7,7 +7,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "compile": "tsc -b",
     "startServer": "server.js",
-    "dev": "nodemon server.js"
+    "dev": "nodemon server.js",
+    "watchTailWind": "npx @tailwindcss/cli -i public/styles/index.css -o public/styles/out.css --watch"
   },
   "keywords": [],
   "author": "",
@@ -20,7 +21,9 @@
     "typescript": "^7.0.2"
   },
   "dependencies": {
+    "@tailwindcss/cli": "^4.3.3",
     "ejs": "^6.0.1",
-    "express": "^5.2.1"
+    "express": "^5.2.1",
+    "tailwindcss": "^4.3.3"
   }
 }
