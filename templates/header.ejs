@@ -8,24 +8,54 @@
     <title><%= title %></title>
     <% } %>
     <link rel="stylesheet" type="text/css" href="/styles/out.css"/>
+    <link rel="stylesheet" type="text/css" href="/styles/index.css"/>
 </head>
 <div class="
 site-header flex items-center bg-sky-600 text-zinc-100 p-[10px] [position:relative] justify-between  
 ">
+
+        <style>
+            .desktop-nav-link{
+                margin:0 10px;
+                font-size: large;
+                font-weight: 400;
+            }
+
+            .desktop-nav-link:hover{
+              text-decoration: underline;
+              color:rgb(25, 61, 179);
+            }
+
+
+        </style>
+
          <h1 class="text-3xl font-bold ">Unit converter</h1>
-        <nav class="
+        <nav id="desktop-nav" class="
         hidden 
         md:inline-flex items-center 
         ">
-            <a href="/">Home</a>
-            <a href="/length">Length</a>
-            <a href="/temperature">Temperature</a>
+            <a class="desktop-nav-link" href="/">Home</a> 
+            <a class="desktop-nav-link" href="/length">Length</a> 
+            <a class="desktop-nav-link" href="/temperature">Temperature</a>
         </nav>
-        <img id='site-main-dropdown' class=" h-[30px] w-[30px]" alt="dropdown-menu" src="/images/menu-rounded.svg"/>
+
+
+
+        <img id='site-main-dropdown' 
+        class=" 
+        h-[30px] w-[30px]
+        md:hidden
+        " 
+        alt="dropdown-menu" src="/images/menu-rounded.svg"
+        />
+        
         <div id='site-main-dropdown-content' class="
         hidden  h-[200px] rounded-sm
         bg-slate-200 text-stone-700 w-[180px] p-2
-        absolute  top-10 left-66"
+        absolute  top-10 left-66
+        md:hidden
+        "
+        
         >
             <img id="site-main-dropdown-close" src="/images/close-outline.svg" 
             class=" 
